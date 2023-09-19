@@ -17,7 +17,9 @@ const Navigation = () => {
         <Link
           to="/about"
           className={`text-base font-inter-semibold ${
-            navItemClicked === "/about" ? "text-nav-item-selected underline" : "text-app-text"
+            navItemClicked === "/about"
+              ? "text-nav-item-selected underline"
+              : "text-app-text-primary"
           }`}
           onClick={handleNavItemClicked}
         >
@@ -26,7 +28,9 @@ const Navigation = () => {
         <Link
           to="/vans"
           className={`text-base font-inter-semibold ${
-            navItemClicked === "/vans" ? "text-nav-item-selected underline" : "text-app-text"
+            navItemClicked === "/vans"
+              ? "text-nav-item-selected underline"
+              : "text-app-text-primary"
           }`}
           onClick={handleNavItemClicked}
         >
