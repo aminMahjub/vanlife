@@ -9,7 +9,7 @@ const Navigation = () => {
 
   return (
     <nav className="flex justify-between items-center px-6 py-9">
-      <Link to="/">
+      <Link to="/" onClick={handleNavItemClicked}>
         <AppLogo />
       </Link>
 

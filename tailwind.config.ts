@@ -13,16 +13,16 @@ export default {
         "primary-color": "#FFEAD0",
         "secondary-color": "#FFCC8D",
         "footer-bg": "#252525",
-        "footer-color": '#AAA',
+        "footer-color": "#AAA",
         "btn-bg-1": "#FFEAD0",
         "btn-selected-bg-1": "#E17654",
         "btn-selected-bg-2": "#161616",
         "btn-selected-bg-3": "#115E59",
-        "btn-bg-primary": "#FF8C38"
+        "btn-bg-primary": "#FF8C38",
       },
 
       backgroundImage: {
-        "home-page": "url('../../public/images/home-main.png')"
+        "home-page": "url('/images/home-main.png')",
       },
 
       fontFamily: {
@@ -35,10 +35,9 @@ export default {
       },
 
       gridTemplateRows: {
-        "app": "112px 1fr 75px"
-      }
+        app: "112px 1fr 75px",
+      },
     },
   },
   plugins: [],
 } satisfies Config;
-

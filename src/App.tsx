@@ -7,20 +7,22 @@ import Vans from "./pages/Vans";
 import Layout from "./components/Layout";
 import Footer from "./components/Footer";
 
+import "./server.js";
+
 const App = () => {
   return (
     <BrowserRouter>
       <Layout>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/vans" element={<Vans />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/vans" element={<Vans />} />
         </Routes>
-        <Footer />      
+        <Footer />
       </Layout>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
