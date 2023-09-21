@@ -8,7 +8,7 @@ const Navigation = () => {
     setNavItemClicked(event.currentTarget?.getAttribute("href") as string);
 
   return (
-    <nav className="flex justify-between items-center px-6 py-9 bg-vans-bg">
+    <nav className="flex justify-between items-center px-6 py-9 bg-app-bg">
       <Link to="/" onClick={handleNavItemClicked}>
         <AppLogo />
       </Link>

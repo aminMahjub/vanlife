@@ -10,3 +10,5 @@ export interface Van {
 export interface FetchResponeVan {
   vans: Van[];
 }
+
+export type VanType = "simple" | "rugged" | "luxury";

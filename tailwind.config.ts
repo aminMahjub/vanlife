@@ -6,12 +6,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        "vans-bg": "#FFF7ED",
+        "app-bg": "#FFF7ED",
         "app-text-primary": "#4D4D4D",
         "app-text-secondary": "#161616",
         "main-drak": "#000",
         "pure-white": "#fff",
         "primary-color": "#FFEAD0",
+        "back-btn-title": "#201F1D",
         "secondary-color": "#FFCC8D",
         "footer-bg": "#252525",
         "footer-color": "#AAA",

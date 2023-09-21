@@ -2,7 +2,7 @@ import VanCard from "../components/VanCard";
 import useVans from "../hooks/useVans";
 
 const Vans = () => {
-  const { data: vans, isLoading, error } = useVans();
+  const { data: vans, isLoading, error } = useVans("/vans");
 
   if (error) return <p>{error}</p>;
   if (isLoading) return <div className="animate-spin absolute top-1/2 left-1/2"></div>;
