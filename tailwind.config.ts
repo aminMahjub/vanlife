@@ -6,6 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        "vans-bg": "#FFF7ED",
         "app-text-primary": "#4D4D4D",
         "app-text-secondary": "#161616",
         "main-drak": "#000",
@@ -36,6 +37,10 @@ export default {
 
       gridTemplateRows: {
         app: "112px 1fr 75px",
+      },
+
+      gridTemplateColumns: {
+        vans: "repeat(auto-fit, minmax(230px, 230px))",
       },
     },
   },

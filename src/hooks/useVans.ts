@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../utils/api";
-import { AxiosErro, AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { Van, FetchResponeVan } from "../types";
 
 const useVans = () => {
@@ -13,7 +13,7 @@ const useVans = () => {
 
     setIsLoading(true);
     api
-      .get<FetchResponeVan>("/svans")
+      .get<FetchResponeVan>("/vans")
       .then((res) => {
         setIsLoading(false);
         setData(res.data.vans);
