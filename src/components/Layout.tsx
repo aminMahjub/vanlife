@@ -1,9 +1,14 @@
-import { ReactNode } from "react";
+import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+import Footer from "./Footer";
+import Navigation from "./Navigation";
+
+const Layout = () => {
   return (
     <div className="grid grid-cols-1 grid-rows-app overflow-y-auto min-h-screen max-w-[549px] mx-auto bg-app-bg">
-      {children}
+      <Navigation />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

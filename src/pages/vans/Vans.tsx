@@ -1,5 +1,5 @@
-import VanCard from "../components/VanCard";
-import useVans from "../hooks/useVans";
+import VanCard from "../../components/VanCard";
+import useVans from "../../hooks/useVans";
 
 const Vans = () => {
   const { data: vans, isLoading, error } = useVans("/vans");

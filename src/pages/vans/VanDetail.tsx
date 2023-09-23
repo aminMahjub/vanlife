@@ -1,8 +1,8 @@
-import { Link, useParams } from "react-router-dom";
-import useVans from "../hooks/useVans";
-import BackBtn from "../components/BackBtn";
-import TypeBadge from "../components/TypeBadge";
-import { VanType } from "../types";
+import { useParams } from "react-router-dom";
+import useVans from "../../hooks/useVans";
+import BackBtn from "../../components/BackBtn";
+import TypeBadge from "../../components/TypeBadge";
+import { VanType } from "../../types";
 
 const VanDetail = () => {
   const { id } = useParams();
@@ -36,12 +36,12 @@ const VanDetail = () => {
         idea is that you can pack up your home and escape for a weekend or even longer!
       </p>
 
-      <Link
-        to="/vans"
+      <button
+        type="button"
         className="inline-block text-center w-full py-3 bg-btn-bg-primary text-pure-white rounded-md font-inter-bold text-base"
       >
-        Find your van
-      </Link>
+        Rent this van
+      </button>
     </main>
   );
 };

@@ -1,40 +1,30 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as AppLogo } from "../assets/icons/logo.svg";
-import { MouseEvent, useState } from "react";
-
 const Navigation = () => {
-  const [navItemClicked, setNavItemClicked] = useState("");
-  const handleNavItemClicked = (event: MouseEvent<HTMLAnchorElement>) =>
-    setNavItemClicked(event.currentTarget?.getAttribute("href") as string);
-
   return (
     <nav className="flex justify-between items-center px-6 py-9 bg-app-bg">
-      <Link to="/" onClick={handleNavItemClicked}>
+      <Link to="/">
         <AppLogo />
       </Link>
 
       <div className="flex justify-center items-center gap-x-5">
         <Link
           to="/about"
-          className={`text-base font-inter-semibold ${
-            navItemClicked === "/about"
-              ? "text-nav-item-selected underline"
-              : "text-app-text-primary"
-          }`}
-          onClick={handleNavItemClicked}
+          className="text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary"
         >
           About
         </Link>
         <Link
           to="/vans"
-          className={`text-base font-inter-semibold ${
-            navItemClicked === "/vans"
-              ? "text-nav-item-selected underline"
-              : "text-app-text-primary"
-          }`}
-          onClick={handleNavItemClicked}
+          className="text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary"
         >
           Vans
+        </Link>
+        <Link
+          to="/host"
+          className="text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary"
+        >
+          Host
         </Link>
       </div>
     </nav>
