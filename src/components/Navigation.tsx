@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as AppLogo } from "../assets/icons/logo.svg";
 const Navigation = () => {
+  const navItemsClasses =
+    "text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary";
+
   return (
     <nav className="flex justify-between items-center px-6 py-9 bg-app-bg">
       <Link to="/">
@@ -8,24 +11,30 @@ const Navigation = () => {
       </Link>
 
       <div className="flex justify-center items-center gap-x-5">
-        <Link
+        <NavLink
           to="/about"
-          className="text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary"
+          className={({ isActive }) =>
+            isActive ? navItemsClasses + " underline" : navItemsClasses
+          }
         >
           About
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/vans"
-          className="text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary"
+          className={({ isActive }) =>
+            isActive ? navItemsClasses + " underline" : navItemsClasses
+          }
         >
           Vans
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/host"
-          className="text-base font-inter-semibold hover:text-nav-item-selected hover:underline text-app-text-primary"
+          className={({ isActive }) =>
+            isActive ? navItemsClasses + " underline" : navItemsClasses
+          }
         >
           Host
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

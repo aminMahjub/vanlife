@@ -1,17 +1,22 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const HostNavigation = () => {
+  const navbarItemsClasses =
+    "text-lg font-inter-medium hover:font-inter-bold hover:text-app-text-secondary text-app-text-primary";
+  const navBarItemActive = "text-lg text-app-text-primary font-inter-bold underline ";
+
   return (
     <nav className="py-8 px-6 flex items-center gap-x-7">
       {hostNavbarItems.map(({ content, id, path }) => {
         return (
-          <Link
+          <NavLink
             to={path}
             key={id}
-            className="text-lg font-inter-medium hover:font-inter-bold hover:text-app-text-secondary text-app-text-primary"
+            end={path === "/host"}
+            className={({ isActive }) => (isActive ? navBarItemActive : navbarItemsClasses)}
           >
             {content}
-          </Link>
+          </NavLink>
         );
       })}
     </nav>

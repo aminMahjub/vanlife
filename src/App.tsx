@@ -25,7 +25,7 @@ const App = () => {
           <Route path="vans/:id" element={<VansDetail />} />
 
           <Route path="host" element={<HostLayout />}>
-            <Route path="host" element={<Dashboard />} />
+            <Route element={<Dashboard />} index />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
