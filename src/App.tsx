@@ -28,6 +28,8 @@ const App = () => {
             <Route element={<Dashboard />} index />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
+            <Route path="vans" element={<ListedVans />} />
+            <Route path="vans/:id" element={<ListedVansDetail />} />
           </Route>
         </Route>
       </Routes>

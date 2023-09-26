@@ -12,7 +12,7 @@ const Navigation = () => {
 
       <div className="flex justify-center items-center gap-x-5">
         <NavLink
-          to="/about"
+          to="about"
           className={({ isActive }) =>
             isActive ? navItemsClasses + " underline" : navItemsClasses
           }
@@ -20,7 +20,7 @@ const Navigation = () => {
           About
         </NavLink>
         <NavLink
-          to="/vans"
+          to="vans"
           className={({ isActive }) =>
             isActive ? navItemsClasses + " underline" : navItemsClasses
           }
@@ -28,7 +28,7 @@ const Navigation = () => {
           Vans
         </NavLink>
         <NavLink
-          to="/host"
+          to="host"
           className={({ isActive }) =>
             isActive ? navItemsClasses + " underline" : navItemsClasses
           }

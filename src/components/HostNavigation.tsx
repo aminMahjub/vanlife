@@ -27,22 +27,22 @@ const hostNavbarItems = [
   {
     content: "Dashboard",
     id: 0,
-    path: "/host",
+    path: ".",
   },
   {
     content: "Income",
     id: 1,
-    path: "/host/income",
+    path: "income",
   },
   {
     content: "Vans",
     id: 2,
-    path: "/host/vans",
+    path: "vans",
   },
   {
     content: "Reviews",
     id: 3,
-    path: "/host/reviews",
+    path: "reviews",
   },
 ];
 
