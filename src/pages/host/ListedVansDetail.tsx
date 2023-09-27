@@ -1,7 +1,7 @@
 import BackBtn from "../../components/BackBtn";
 import TypeBadge from "../../components/TypeBadge";
 import useVans from "../../hooks/useVans";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, Outlet } from "react-router-dom";
 
 const VansNavigation = () => {
   const navbarItemsClasses =
@@ -11,21 +11,22 @@ const VansNavigation = () => {
   return (
     <nav className="flex items-center gap-x-7">
       <NavLink
-        to="/vans/"
+        to="."
+        end
         className={({ isActive }) => (isActive ? navBarItemActive : navbarItemsClasses)}
       >
         Details
       </NavLink>
 
       <NavLink
-        to="/vans/"
+        to="pricing"
         className={({ isActive }) => (isActive ? navBarItemActive : navbarItemsClasses)}
       >
         Pricing
       </NavLink>
 
       <NavLink
-        to="/vans/"
+        to="photos"
         className={({ isActive }) => (isActive ? navBarItemActive : navbarItemsClasses)}
       >
         Photos
@@ -39,7 +40,7 @@ const ListedVansDetail = () => {
   const { data, isLoading, error } = useVans(`/host/vans/${id}`, [id]);
 
   if (data[0]) {
-    const { imageUrl, name, description, price, type } = data[0];
+    const { imageUrl, name, price, type } = data[0];
     return (
       <main className="px-7 pb-11">
         <BackBtn title="Back to all vans" />
@@ -61,22 +62,9 @@ const ListedVansDetail = () => {
 
           <VansNavigation />
 
-          <div className="text-app-text-secondary text-sm font-inter-medium mb-4 mt-6">
-            <span className="font-inter-bold mr-1">Name:</span>
-            {name}
-          </div>
-          <div className="text-app-text-secondary text-sm font-inter-medium mb-4">
-            <span className="font-inter-bold mr-1">Category:</span>
-            {type}
-          </div>
-          <div className="text-app-text-secondary text-sm font-inter-medium mb-4">
-            <span className="font-inter-bold mr-1">Description:</span>
-            {description}
-          </div>
-          <div className="text-app-text-secondary text-sm font-inter-medium mb-4">
-            <span className="font-inter-bold mr-1">Visibility:</span>
-            Public
-          </div>
+          <section className="mt-6">
+            <Outlet context={data[0]} />
+          </section>
         </div>
       </main>
     );

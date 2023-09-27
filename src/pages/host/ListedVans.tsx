@@ -19,8 +19,6 @@ const ListedVansCard = ({ van }: { van: Van }) => {
 };
 
 const ListedVans = () => {
-  //just for create ui
-
   const { data } = useVans("/host/vans");
 
   return (

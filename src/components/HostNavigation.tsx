@@ -12,7 +12,7 @@ const HostNavigation = () => {
           <NavLink
             to={path}
             key={id}
-            end={path === "/host"}
+            end={path === "."}
             className={({ isActive }) => (isActive ? navBarItemActive : navbarItemsClasses)}
           >
             {content}

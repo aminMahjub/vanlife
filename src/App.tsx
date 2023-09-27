@@ -13,6 +13,9 @@ import ListedVans from "./pages/host/ListedVans.js";
 import ListedVansDetail from "./pages/host/ListedVansDetail.js";
 
 import "./server.js";
+import Details from "./pages/host/hostVansDetails/Details.js";
+import Pricing from "./pages/host/hostVansDetails/Pricing.js";
+import Photos from "./pages/host/hostVansDetails/Photos.js";
 
 const App = () => {
   return (
@@ -29,7 +32,11 @@ const App = () => {
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
             <Route path="vans" element={<ListedVans />} />
-            <Route path="vans/:id" element={<ListedVansDetail />} />
+            <Route path="vans/:id" element={<ListedVansDetail />}>
+              <Route index element={<Details />} />
+              <Route path="pricing" element={<Pricing />} />
+              <Route path="photos" element={<Photos />} />
+            </Route>
           </Route>
         </Route>
       </Routes>
