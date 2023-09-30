@@ -2,6 +2,7 @@ import BackBtn from "../../components/BackBtn";
 import TypeBadge from "../../components/TypeBadge";
 import useVans from "../../hooks/useVans";
 import { useParams, NavLink, Outlet } from "react-router-dom";
+import { VanType } from "../../types";
 
 const VansNavigation = () => {
   const navbarItemsClasses =
@@ -48,7 +49,7 @@ const ListedVansDetail = () => {
             <img src={imageUrl} alt={name} width={160.15} height={157.903} />
 
             <div>
-              <TypeBadge type={type} />
+              <TypeBadge type={type as VanType} />
 
               <h1 className="mt-4 text-app-text-secondary font-inter-bold text-2xl">{name}</h1>
               <div className="text-app-text-secondary font-inter-bold text-xl">
