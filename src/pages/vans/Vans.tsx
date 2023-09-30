@@ -3,7 +3,7 @@ import VanCard from "../../components/VanCard";
 import useVans from "../../hooks/useVans";
 
 const Vans = () => {
-  const { data: vans, isLoading, error } = useVans("/vans");
+  const { data: vans, isLoading } = useVans("/vans");
 
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
