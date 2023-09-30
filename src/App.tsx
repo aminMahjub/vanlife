@@ -11,18 +11,19 @@ import Income from "./pages/host/Income.js";
 import Reviews from "./pages/host/Reviews.js";
 import ListedVans from "./pages/host/ListedVans.js";
 import ListedVansDetail from "./pages/host/ListedVansDetail.js";
-
-import "./server.js";
 import Details from "./pages/host/hostVansDetails/Details.js";
 import Pricing from "./pages/host/hostVansDetails/Pricing.js";
 import Photos from "./pages/host/hostVansDetails/Photos.js";
+import NotFound from "./pages/NotFound.js";
+
+import "./server.js";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VansDetail />} />
@@ -38,6 +39,8 @@ const App = () => {
               <Route path="photos" element={<Photos />} />
             </Route>
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

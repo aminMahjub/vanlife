@@ -17,7 +17,7 @@ const VanDetail = () => {
 
   return (
     <main className="pt-8 px-6 pb-20">
-      <BackBtn title="Back to all vans" />
+      <BackBtn />
 
       <img src={imageUrl} alt={name} className="my-11" />
 

@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import useVans from "../../hooks/useVans";
 
@@ -66,8 +66,15 @@ const Vans = () => {
       </section>
 
       <section className="grid mt-14 justify-center grid-cols-vans gap-3">
+        {isLoading && <div className="">Loading...</div>}
         {filteredVans.map((van) => {
-          return <VanCard key={van.id} van={van}></VanCard>;
+          return (
+            <VanCard
+              key={van.id}
+              van={van}
+              state={{ searchParams: searchParams.toString(), typeFilter: typeFilter || "all" }}
+            ></VanCard>
+          );
         })}
       </section>
     </main>

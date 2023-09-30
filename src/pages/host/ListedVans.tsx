@@ -5,7 +5,7 @@ import { Van } from "../../types";
 const ListedVansCard = ({ van }: { van: Van }) => {
   return (
     <Link
-      to={`/host/vans/${van.id}`}
+      to={van.id}
       className="px-6 py-4 flex items-center gap-x-4 bg-pure-white rounded-md last:mb-0 mb-4 cursor-pointer"
     >
       <img src={van.imageUrl} alt={van.name} width={65.877} height={65.877} />

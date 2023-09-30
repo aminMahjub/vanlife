@@ -2,11 +2,17 @@ import { Link } from "react-router-dom";
 import { Van, VanType } from "../types";
 
 import TypeBadge from "./TypeBadge";
-const VanCard = ({ van }: { van: Van }) => {
+const VanCard = ({
+  van,
+  state,
+}: {
+  van: Van;
+  state: { searchParams: string; typeFilter: string | null };
+}) => {
   const { name, id, type, price, imageUrl } = van;
 
   return (
-    <Link to={`/vans/${id}`}>
+    <Link to={id} state={state}>
       <img src={imageUrl} alt={name} className="object-cover mb-2" />
 
       <div className="flex items-center justify-between">
