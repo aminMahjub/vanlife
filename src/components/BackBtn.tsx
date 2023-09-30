@@ -3,7 +3,6 @@ import { ReactComponent as LeftArrow } from "../../public/svg/left-arrow.svg";
 
 const BackBtn = () => {
   const { searchParams, typeFilter } = useLocation().state;
-  console.log(searchParams);
 
   return (
     <Link
