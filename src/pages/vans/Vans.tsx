@@ -1,12 +1,16 @@
-import { useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
-import useVans from "../../hooks/useVans";
+import getVans from "../../services/getVans";
+import { Van } from "../../types";
+
+export const loader = () => {
+  return getVans();
+};
 
 const Vans = () => {
-  const { data: vans, isLoading } = useVans("/vans");
-
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
+  const vans: Van[] = useLoaderData();
 
   const filteredVans = typeFilter ? vans?.filter(({ type }) => type === typeFilter) : vans;
   return (
@@ -66,7 +70,6 @@ const Vans = () => {
       </section>
 
       <section className="grid mt-14 justify-center grid-cols-vans gap-3">
-        {isLoading && <div className="">Loading...</div>}
         {filteredVans.map((van) => {
           return (
             <VanCard

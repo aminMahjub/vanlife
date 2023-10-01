@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useVans from "../../hooks/useVans";
+import useVans from "../../services/getVans";
 import BackBtn from "../../components/BackBtn";
 import TypeBadge from "../../components/TypeBadge";
 import { VanType } from "../../types";

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useVans from "../../hooks/useVans";
+import useVans from "../../services/getVans";
 import { Van } from "../../types";
 
 const ListedVansCard = ({ van }: { van: Van }) => {

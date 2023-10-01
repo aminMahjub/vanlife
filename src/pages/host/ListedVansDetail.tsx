@@ -1,6 +1,6 @@
 import BackBtn from "../../components/BackBtn";
 import TypeBadge from "../../components/TypeBadge";
-import useVans from "../../hooks/useVans";
+import useVans from "../../services/getVans";
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { VanType } from "../../types";
 
