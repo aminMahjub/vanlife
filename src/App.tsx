@@ -20,6 +20,7 @@ import Details from "./pages/host/hostVansDetails/Details.js";
 import Pricing from "./pages/host/hostVansDetails/Pricing.js";
 import Photos from "./pages/host/hostVansDetails/Photos.js";
 import NotFound from "./pages/NotFound.js";
+import ErrorPromt from "./components/ErrorPromt.js";
 
 import "./server.js";
 
@@ -28,7 +29,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} loader={vansLoader} />
+      <Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<ErrorPromt />} />
       <Route path="vans/:id" element={<VansDetail />} />
 
       <Route path="host" element={<HostLayout />}>
