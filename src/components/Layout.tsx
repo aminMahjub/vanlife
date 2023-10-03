@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { ReactComponent as AppLogo } from "../assets/icons/logo.svg";
+import { ReactComponent as UserCircle } from "../../public/svg/user-circle.svg";
 
 const Layout = () => {
   return (
@@ -55,6 +56,10 @@ const Navigation = () => {
           }
         >
           Host
+        </NavLink>
+
+        <NavLink to="login" className={navItemsClasses}>
+          <UserCircle />
         </NavLink>
       </div>
     </nav>

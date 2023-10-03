@@ -21,6 +21,7 @@ import Pricing from "./pages/host/hostVansDetails/Pricing.js";
 import Photos from "./pages/host/hostVansDetails/Photos.js";
 import NotFound from "./pages/NotFound.js";
 import ErrorPromt from "./components/ErrorPromt.js";
+import Login from "./pages/auth/Login.js";
 
 import "./server.js";
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
+      <Route path="login" element={<Login />} />
       <Route path="about" element={<About />} />
       <Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<ErrorPromt />} />
       <Route path="vans/:id" element={<VansDetail />} />
