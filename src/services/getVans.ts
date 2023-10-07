@@ -1,8 +1,9 @@
 import { FetchResponeVan, Van } from "../types";
 import api from "../utils/api";
 
-const getVans = async () => {
-  const res = await api<FetchResponeVan>("/vans");
+const getVans = async (endpoint: string) => {
+  const res = await api<FetchResponeVan<Van[] | Van>>(endpoint);
+
   if (res.status === 400) {
     throw {
       message: "error occured",
@@ -11,7 +12,7 @@ const getVans = async () => {
     };
   }
 
-  return await res.data.vans;
+  return res.data.vans;
 };
 
 export default getVans;

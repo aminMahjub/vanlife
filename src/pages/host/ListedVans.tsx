@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import useVans from "../../services/getVans";
+import { Link, useLoaderData } from "react-router-dom";
+import getVans from "../../services/getVans";
 import { Van } from "../../types";
+import { requireAuth } from "../../utils/requireAuth";
 
 const ListedVansCard = ({ van }: { van: Van }) => {
   return (
@@ -18,15 +19,20 @@ const ListedVansCard = ({ van }: { van: Van }) => {
   );
 };
 
+export const loader = async () => {
+  await requireAuth();
+  return getVans("/host/vans");
+};
+
 const ListedVans = () => {
-  const { data } = useVans("/host/vans");
+  const listedVans = useLoaderData() as Van[];
 
   return (
     <main className="px-6">
       <h1 className=" text-app-text-secondary font-inter-bold text-3xl mb-8">Your listed vans</h1>
 
       <div className="overflow-y-auto">
-        {data?.map((van) => {
+        {listedVans?.map((van) => {
           return <ListedVansCard key={van.id} van={van} />;
         })}
       </div>

@@ -1,10 +1,10 @@
 import { useLoaderData, useSearchParams, Link } from "react-router-dom";
 import getVans from "../../services/getVans";
-import { Van, VanType } from "../../types";
+import { FetchResponeVan, Van, VanType } from "../../types";
 import TypeBadge from "../../components/TypeBadge";
 
 export const loader = () => {
-  return getVans();
+  return getVans("/vans");
 };
 
 const Vans = () => {

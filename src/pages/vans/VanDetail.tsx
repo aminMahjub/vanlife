@@ -1,19 +1,15 @@
-import { useParams } from "react-router-dom";
-import useVans from "../../services/getVans";
+import { ActionFunctionArgs, useLoaderData, useParams } from "react-router-dom";
 import BackBtn from "../../components/BackBtn";
 import TypeBadge from "../../components/TypeBadge";
-import { VanType } from "../../types";
+import { Van, VanType } from "../../types";
+import getVans from "../../services/getVans";
+
+export const loader = ({ params }: ActionFunctionArgs) => {
+  return getVans(`/vans/${params.id}`);
+};
 
 const VanDetail = () => {
-  const { id } = useParams();
-  const {
-    data: { imageUrl, name, price, description, type },
-    isLoading,
-    error,
-  } = useVans(`/vans/${id}`, [id]);
-
-  if (error) return <p>{error}</p>;
-  if (isLoading) return <div className="animate-spin absolute top-1/2 left-1/2"></div>;
+  const { imageUrl, name, type, description, price } = useLoaderData() as Van;
 
   return (
     <main className="pt-8 px-6 pb-20">
@@ -30,11 +26,7 @@ const VanDetail = () => {
         <span className="text-md font-inter-medium">/day</span>
       </div>
 
-      <p className="text-app-text-secondary text-base font-inter-medium mb-5 ">
-        The Modest Explorer is a van designed to get you out of the house and into nature. This
-        beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The
-        idea is that you can pack up your home and escape for a weekend or even longer!
-      </p>
+      <p className="text-app-text-secondary text-base font-inter-medium mb-5 ">{description}</p>
 
       <button
         type="button"
