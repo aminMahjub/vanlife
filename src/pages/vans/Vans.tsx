@@ -1,7 +1,8 @@
-import { useLoaderData, useSearchParams, Link } from "react-router-dom";
+import { useLoaderData, useSearchParams, Link, useNavigate, useNavigation } from "react-router-dom";
 import getVans from "../../services/getVans";
 import { FetchResponeVan, Van, VanType } from "../../types";
 import TypeBadge from "../../components/TypeBadge";
+import Loading from "../../components/Loading";
 
 export const loader = () => {
   return getVans("/vans");
@@ -11,8 +12,10 @@ const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const vans = useLoaderData() as Van[];
+  const navigation = useNavigation();
 
   const filteredVans = typeFilter ? vans?.filter(({ type }) => type === typeFilter) : vans;
+
   return (
     <main className="relative bg-vans-bg px-7 pb-20 pt-14">
       <h1 className="text-app-text-secondary text-3xl font-inter-bold mb-6">
@@ -70,15 +73,19 @@ const Vans = () => {
       </section>
 
       <section className="grid mt-14 justify-center grid-cols-vans gap-3">
-        {filteredVans.map((van) => {
-          return (
-            <VanCard
-              key={van.id}
-              van={van}
-              state={{ searchParams: searchParams.toString(), typeFilter: typeFilter || "all" }}
-            ></VanCard>
-          );
-        })}
+        {navigation.state !== "loading" ? (
+          filteredVans.map((van) => {
+            return (
+              <VanCard
+                key={van.id}
+                van={van}
+                state={{ searchParams: searchParams.toString(), typeFilter: typeFilter || "all" }}
+              ></VanCard>
+            );
+          })
+        ) : (
+          <Loading />
+        )}
       </section>
     </main>
   );

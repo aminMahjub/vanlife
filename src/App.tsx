@@ -28,6 +28,8 @@ import Login, { loader as loginLoader, action as loginAction } from "./pages/aut
 import "./server.js";
 import { requireAuth } from "./utils/requireAuth.js";
 
+const protectedRoutes = async ({ request }: { request: Request }) => await requireAuth(request);
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -43,9 +45,9 @@ const router = createBrowserRouter(
       />
 
       <Route path="host" element={<HostLayout />}>
-        <Route element={<Dashboard />} index loader={async () => await requireAuth()} />
-        <Route path="income" element={<Income />} loader={async () => await requireAuth()} />
-        <Route path="reviews" element={<Reviews />} loader={async () => await requireAuth()} />
+        <Route element={<Dashboard />} index loader={protectedRoutes} />
+        <Route path="income" element={<Income />} loader={protectedRoutes} />
+        <Route path="reviews" element={<Reviews />} loader={protectedRoutes} />
         <Route
           path="vans"
           element={<ListedVans />}

@@ -19,8 +19,8 @@ const ListedVansCard = ({ van }: { van: Van }) => {
   );
 };
 
-export const loader = async () => {
-  await requireAuth();
+export const loader = async ({ request }: { request: Request }) => {
+  await requireAuth(request);
   return getVans("/host/vans");
 };
 

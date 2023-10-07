@@ -1,12 +1,18 @@
 import BackBtn from "../../components/BackBtn";
 import TypeBadge from "../../components/TypeBadge";
-import { NavLink, Outlet, ActionFunctionArgs, useLoaderData } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  ActionFunctionArgs,
+  useLoaderData,
+  LoaderFunctionArgs,
+} from "react-router-dom";
 import { Van, VanType } from "../../types";
 import getVans from "../../services/getVans";
 import { requireAuth } from "../../utils/requireAuth";
 
-export const loader = async ({ params }: ActionFunctionArgs) => {
-  await requireAuth();
+export const loader = async ({ request, params }: LoaderFunctionArgs) => {
+  await requireAuth(request);
   return getVans(`/host/vans/${params.id}`);
 };
 
@@ -43,11 +49,12 @@ const VansNavigation = () => {
 };
 
 const ListedVansDetail = () => {
-  const listedVanDetails = useLoaderData() as Van[];
-  const { imageUrl, name, type, price } = listedVanDetails[0];
+  const listedVanDetails = useLoaderData() as Van;
+  const { imageUrl, name, type, price } = listedVanDetails;
 
   return (
     <main className="px-7 pb-11">
+      <BackBtn />
       <div className="bg-pure-white p-6 mt-9 rounded-md">
         <div className="flex items-center gap-x-5 mb-6">
           <img src={imageUrl} alt={name} width={160.15} height={157.903} />
@@ -66,7 +73,7 @@ const ListedVansDetail = () => {
         <VansNavigation />
 
         <section className="mt-6">
-          <Outlet context={listedVanDetails[0]} />
+          <Outlet context={listedVanDetails} />
         </section>
       </div>
     </main>

@@ -1,4 +1,4 @@
-import { Link, useLoaderData, Form, useActionData } from "react-router-dom";
+import { Link, useLoaderData, Form, useActionData, useNavigation } from "react-router-dom";
 import { useState } from "react";
 import getUsers from "../../services/getUsers";
 import { redirect } from "../../utils/mutateRedicret";
@@ -19,19 +19,18 @@ export const action = async ({ request }: { request: Request }) => {
 
   try {
     const user = await getUsers({ email, password });
+    const pahtname = new URL(request.url).searchParams.get("redirectTo") || "/host";
     localStorage.setItem("logged_in", "true");
-    throw redirect("/host");
+    throw redirect(pahtname);
   } catch (error) {
     return error;
   }
 };
 
-type StatusType = "idle" | "submitting" | "submitted";
-
 const Login = () => {
   const loginMessage = useLoaderData() as string;
   const errorMsg = useActionData() as AxiosError;
-  const [status, setStatus] = useState<StatusType>("idle");
+  const { state } = useNavigation();
 
   return (
     <Form method="post" className="mt-12 px-7">
@@ -61,10 +60,10 @@ const Login = () => {
 
       <button
         type="submit"
-        disabled={status === "submitting"}
+        disabled={state === "submitting"}
         className="bg-btn-bg-primary cursor-pointer rounded-md text-pure-white py-4 w-full text-center font-inter-bold text-base mb-12"
       >
-        {status === "submitting" ? "Sending" : "Sign In"}
+        {state === "submitting" ? "Sending" : "Sign In"}
       </button>
 
       <p className="font-inter-medium text-base text-app-text-secondary text-center">
