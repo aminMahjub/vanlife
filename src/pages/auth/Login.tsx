@@ -3,6 +3,7 @@ import { useState } from "react";
 import getUsers from "../../services/getUsers";
 import { redirect } from "../../utils/mutateRedicret";
 import { AxiosError } from "axios";
+import useTitleDocument from "../../hooks/useTitleDocument";
 
 export const loader = async ({ request }: { request: Request }) => {
   const encodedMessage = new URL(request.url).searchParams.get("msg");
@@ -31,6 +32,7 @@ const Login = () => {
   const loginMessage = useLoaderData() as string;
   const errorMsg = useActionData() as AxiosError;
   const { state } = useNavigation();
+  const pageTitle = useTitleDocument("Login");
 
   return (
     <Form method="post" className="mt-12 px-7">

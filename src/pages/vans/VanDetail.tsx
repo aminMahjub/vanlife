@@ -5,6 +5,7 @@ import TypeBadge from "../../components/TypeBadge";
 import { Van, VanType, DeferedVanDetailType } from "../../types";
 import getVans from "../../services/getVans";
 import Loading from "../../components/Loading";
+import useTitleDocument from "../../hooks/useTitleDocument";
 
 export const loader = ({ params }: ActionFunctionArgs) => {
   return defer({ vanDetail: getVans(`/vans/${params.id}`) });
@@ -12,6 +13,7 @@ export const loader = ({ params }: ActionFunctionArgs) => {
 
 const VanDetail = () => {
   const loadedVanDetail = useLoaderData() as DeferedVanDetailType;
+  const pageTitle = useTitleDocument("Van Details");
 
   const renderVanDetail = ({ imageUrl, type, price, name, description }: Van) => {
     return (

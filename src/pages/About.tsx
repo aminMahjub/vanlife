@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useTitleDocument from "../hooks/useTitleDocument";
 
 const About = () => {
+  const pageTitle = useTitleDocument("About");
+
   return (
     <main>
       <img src="/images/about-main.png" alt="A man enjoyin her trip above the van" loading="lazy" />

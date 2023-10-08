@@ -14,6 +14,7 @@ import getVans from "../../services/getVans";
 import { requireAuth } from "../../utils/requireAuth";
 import { Suspense } from "react";
 import Loading from "../../components/Loading";
+import useTitleDocument from "../../hooks/useTitleDocument";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   await requireAuth(request);
@@ -54,6 +55,7 @@ const VansNavigation = () => {
 
 const ListedVansDetail = () => {
   const listedVanDetails = useLoaderData() as DeferedVanDetailType;
+  const pageTitle = useTitleDocument("Host Van Details");
 
   const renderListeVanDetail = (loadedListedVanDetail: Van) => {
     const { imageUrl, name, type, price } = loadedListedVanDetail;

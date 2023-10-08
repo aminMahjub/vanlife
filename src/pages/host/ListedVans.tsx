@@ -4,6 +4,7 @@ import getVans from "../../services/getVans";
 import { Van, DeferedVansType } from "../../types";
 import { requireAuth } from "../../utils/requireAuth";
 import Loading from "../../components/Loading";
+import useTitleDocument from "../../hooks/useTitleDocument";
 
 const ListedVansCard = ({ van }: { van: Van }) => {
   return (
@@ -28,6 +29,7 @@ export const loader = async ({ request }: { request: Request }) => {
 
 const ListedVans = () => {
   const listedVans = useLoaderData() as DeferedVansType;
+  const pageTitle = useTitleDocument("Host Vans");
 
   return (
     <main className="px-6">

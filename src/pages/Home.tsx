@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useTitleDocument from "../hooks/useTitleDocument";
 
 const Home = () => {
+  const pageTitle = useTitleDocument("Home");
   return (
     <main>
       <header className="bg-home-page bg-cover bg-top bg-no-repeat px-6 max-h-1/3 py-16">

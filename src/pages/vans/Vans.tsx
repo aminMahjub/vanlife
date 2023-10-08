@@ -4,6 +4,7 @@ import { Van, VanType, DeferedVansType } from "../../types";
 import TypeBadge from "../../components/TypeBadge";
 import { Suspense } from "react";
 import Loading from "../../components/Loading";
+import useTitleDocument from "../../hooks/useTitleDocument";
 
 export const loader = () => {
   return defer({ vans: getVans("/vans") });
@@ -13,6 +14,7 @@ const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const deferedVans = useLoaderData() as DeferedVansType;
+  const pageTitle = useTitleDocument("Vans");
 
   const handleSeachParams = (key: string, val: string | null) =>
     setSearchParams((prevParam) => {
