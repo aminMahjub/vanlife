@@ -21,3 +21,11 @@ export interface FetchResponeVan<TVan> {
 export type FetchResponeUser = Omit<User, "id" | "name">;
 
 export type VanType = "simple" | "rugged" | "luxury";
+
+export interface DeferedVansType {
+  vans: Promise<Van[]>;
+}
+
+export interface DeferedVanDetailType {
+  vanDetail: Promise<Van>;
+}

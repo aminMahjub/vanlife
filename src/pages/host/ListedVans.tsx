@@ -1,7 +1,9 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { Link, useLoaderData, defer, Await } from "react-router-dom";
 import getVans from "../../services/getVans";
-import { Van } from "../../types";
+import { Van, DeferedVansType } from "../../types";
 import { requireAuth } from "../../utils/requireAuth";
+import Loading from "../../components/Loading";
 
 const ListedVansCard = ({ van }: { van: Van }) => {
   return (
@@ -21,20 +23,30 @@ const ListedVansCard = ({ van }: { van: Van }) => {
 
 export const loader = async ({ request }: { request: Request }) => {
   await requireAuth(request);
-  return getVans("/host/vans");
+  return defer({ vans: getVans("/host/vans") });
 };
 
 const ListedVans = () => {
-  const listedVans = useLoaderData() as Van[];
+  const listedVans = useLoaderData() as DeferedVansType;
 
   return (
     <main className="px-6">
       <h1 className=" text-app-text-secondary font-inter-bold text-3xl mb-8">Your listed vans</h1>
 
       <div className="overflow-y-auto">
-        {listedVans?.map((van) => {
-          return <ListedVansCard key={van.id} van={van} />;
-        })}
+        <Suspense fallback={<Loading />}>
+          <Await resolve={listedVans.vans}>
+            {(listedVans: Van[]) => {
+              return (
+                <>
+                  {listedVans?.map((van) => {
+                    return <ListedVansCard key={van.id} van={van} />;
+                  })}
+                </>
+              );
+            }}
+          </Await>
+        </Suspense>
       </div>
     </main>
   );
